@@ -4,8 +4,7 @@ import java.util.stream.IntStream;
 
 
 public class Main {
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         /**
          * Create a random group of persons. Use streams in order to filter the drivers and the passengers.
          * Put all the drivers in a LinkedList and print them sorted by their age.
@@ -14,12 +13,10 @@ public class Main {
        // var persons = IntStream.rangeClosed(0, 5).mapToObj(i -> new Person("Person"+i, (int)Math.random() * 50 + 10, "Destination"+i)).toArray(Person[]::new);
 
         List<Person> persons = IntStream.rangeClosed(0, 5).mapToObj(i->{
-            if(i%2 == 0)
-            {
+            if(i%2 == 0) {
                 return new Driver("Driver"+i,(int)(Math.random() * 41 + 10)+10,"Destination" + i % 3+1);
             }
-            else
-            {
+            else {
                 return new Passenger("Passenger"+i, (int)(Math.random() * 41) + 10,"Destination" + (i % 3+1));
             }
         }).toList();
