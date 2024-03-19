@@ -1,11 +1,9 @@
 public class Passenger extends Person implements Comparable<Passenger> {
-    Passenger(String name, int age, String destination)
-    {
+    Passenger(String name, int age, String destination) {
         super(name, age, destination);
     }
 
-    public String getType()
-    {
+    public String getType() {
         return "Passenger";
     }
 
