@@ -1,11 +1,9 @@
-public class Driver extends Person{
-    Driver(String name, int age, String destination)
-    {
+public class Driver extends Person {
+    Driver(String name, int age, String destination {
         super(name, age, destination);
     }
 
-    public String getType()
-    {
+    public String getType() {
         return "Drier";
     }
 
