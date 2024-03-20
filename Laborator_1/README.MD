@@ -43,7 +43,7 @@ The number of all cycles in a wheel graph with 10 is: 73
 * Launch the application from the command line, for example: java Lab1 100 200 1.
 
 
-### Output 
+### Output: 
 100 is a 1-reductible.  
 103 is a 1-reductible.  
 109 is a 1-reductible.  
