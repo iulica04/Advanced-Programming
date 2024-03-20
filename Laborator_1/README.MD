@@ -1,7 +1,7 @@
 ## Ouput for Bonus: 
 Introduceti numarul de noduri ale grafului: 
 10
-\begin{bmatrix} 
+\begin{bmatrix} \\
 0 1 0 0 0 0 0 0 1 1 \\\
 1 0 1 0 0 0 0 0 0 1 \\\
 0 1 0 1 0 0 0 0 0 1 \\\ 
