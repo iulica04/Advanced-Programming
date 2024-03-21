@@ -18,11 +18,11 @@ The problem is to match drivers and passengers, such that the number of matching
 * Put all the passengers in a TreeSet and print them sorted by their name.
 
 ### Output
-[Name: Driver4, Age: 34, Destination: Destination11, Type: driver
-, Name: Driver2, Age: 39, Destination: Destination21, Type: driver
-, Name: Driver0, Age: 43, Destination: Destination01, Type: driver
+[Name: Driver4, Age: 34, Destination: Destination11, Type: driver  
+, Name: Driver2, Age: 39, Destination: Destination21, Type: driver  
+, Name: Driver0, Age: 43, Destination: Destination01, Type: driver  
 ]
-[Name: Passenger1, Age: 29, Destination: Destination2, Type: passenger
-, Name: Passenger3, Age: 13, Destination: Destination1, Type: passenger
-, Name: Passenger5, Age: 26, Destination: Destination3, Type: passenger
+[Name: Passenger1, Age: 29, Destination: Destination2, Type: passenger  
+, Name: Passenger3, Age: 13, Destination: Destination1, Type: passenger  
+, Name: Passenger5, Age: 26, Destination: Destination3, Type: passenger  
 ]
