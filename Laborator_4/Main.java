@@ -1,31 +1,43 @@
+import com.github.javafaker.Faker;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
 public class Main {
-    public static void main(String args[]) {
-        /**
-         * Create a random group of persons. Use streams in order to filter the drivers and the passengers.
-         * Put all the drivers in a LinkedList and print them sorted by their age.
-         * Put all the passengers in a TreeSet and print them sorted by their name.*/
+    public static void main(String[] args) {
+        Random rand = new Random();
+        int personsNumber = rand.nextInt(11) + 30;
+        int driversNumber = rand.nextInt(10) + 6; // intre 6 si 16 soferii
 
-       // var persons = IntStream.rangeClosed(0, 5).mapToObj(i -> new Person("Person"+i, (int)Math.random() * 50 + 10, "Destination"+i)).toArray(Person[]::new);
+        System.out.println("Number of persons: " + personsNumber);
+        System.out.println("Number of drivers: " + driversNumber);
 
-        List<Person> persons = IntStream.rangeClosed(0, 5).mapToObj(i->{
-            if(i%2 == 0) {
-                return new Driver("Driver"+i,(int)(Math.random() * 41 + 10)+10,"Destination" + i % 3+1);
-            }
-            else {
-                return new Passenger("Passenger"+i, (int)(Math.random() * 41) + 10,"Destination" + (i % 3+1));
+        Faker fake = new Faker();
+
+        List<String> driversDestination = new ArrayList<>();
+        for (int i = 1; i <= driversNumber; i++) {
+            driversDestination.add(fake.address().cityName());
+        }
+
+
+        List<Person> persons = IntStream.rangeClosed(0, personsNumber).mapToObj(i -> {
+            if (i < driversNumber) {
+                return new Driver(fake.name().fullName(), (int) (Math.random() * 41 + 10) + 10, driversDestination.get(i));
+            } else {
+                int randomForStartLocation = rand.nextInt(driversNumber);
+                int random = rand.nextInt(driversNumber / 4); // o marja ca sa nu avem locatia de start egala cu destinatia finala
+                int randomForDestination = rand.nextInt(driversNumber - random);
+                return new Passenger(fake.name().fullName(), (int) (Math.random() * 41) + 10, driversDestination.get(randomForStartLocation), driversDestination.get(randomForDestination));
             }
         }).toList();
 
-        LinkedList<Driver> drivers = persons.stream()
+        List<Driver> drivers = persons.stream()
                 .filter(person -> person instanceof Driver)
                 .map(person -> (Driver) person)
                 .sorted(Comparator.comparingInt(Person::getAge))
-                .collect(Collectors.toCollection(LinkedList :: new));
+                .collect(Collectors.toCollection(LinkedList::new));
 
         Set<Passenger> passengers = persons.stream()
                 .filter(person -> person instanceof Passenger)
@@ -35,6 +47,11 @@ public class Main {
 
         System.out.println(drivers.toString());
         System.out.println(passengers.toString());
+
+        //---------------------------------------------------------------------
+
+        Problem problem = new Problem(drivers, passengers);
+        problem.algGreedy();
 
     }
 }
