@@ -4,7 +4,7 @@ public class Driver extends Person {
     }
 
     public String getType() {
-        return "Drier";
+        return "Driver";
     }
 
     @Override
