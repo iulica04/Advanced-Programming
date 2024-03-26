@@ -41,3 +41,25 @@ day 1
 Am adaugat toate locatiile free posibile de vizitat.  
 In day 1: [Attraction{name='La Défense de Paris', description='bronze statue by French sculptor Louis-Ernest Barrias', location='the Arche de la Défense, Paris, France'}, Attraction{name='Notre Dame', description='medieval Catholic cathedral', location='Ile de la Cite, Paris, France'}]  
 In day 2: [Attraction{name='Shadows and Lights - Cultural Olympiad', description='', location='Cité de la musique - Philharmonie de Paris, 221 avenue Jean Jaurès - 75019 Paris'}]  
+
+## Bonus 
+* The tourist wants that in each day of the trip he/she visits/sees/attends different types of attractions (if possible).
+* The travel must also take into consideration the timetables of the attractions (in which days they are open).
+* Implement at least two graph coloring heuristics and compare their results.
+
+### Output: 
+TRAVEL PLAN WITH WELSH POWELL ALGORITHM: 
+All attractions are visitable in this number of days.
+DAY 1: 
+[Attraction{name='Notre Dame', description='medieval Catholic cathedral', location='Ile de la Cite, Paris, France'}, Attraction{name='La Défense de Paris', description='bronze statue by French sculptor Louis-Ernest Barrias', location='the Arche de la Défense, Paris, France'}, Attraction{name='Shadows and Lights - Cultural Olympiad', description='', location='Cité de la musique - Philharmonie de Paris, 221 avenue Jean Jaurès - 75019 Paris'}]
+
+DAY 2: 
+[Attraction{name='Catedrala din Bourges', description='', location='14 pl Etienne Dolet, 18000 Bourges'}, Attraction{name='Clock Sculpture', description='Just outside the Saint-Lazare train station in Paris is a sculpture with clocks….lots of clocks.', location=' Cour du Havre, 5 Rue d’Amsterdam, 75008 Paris'}]
+
+__________________________________________
+
+TRAVEL PLAN WITH DSATUR ALGORITHM: 
+DAY 1:   
+[Attraction{name='Notre Dame', description='medieval Catholic cathedral', location='Ile de la Cite, Paris, France'}, Attraction{name='La Défense de Paris', description='bronze statue by French sculptor Louis-Ernest Barrias', location='the Arche de la Défense, Paris, France'}, Attraction{name='Shadows and Lights - Cultural Olympiad', description='', location='Cité de la musique - Philharmonie de Paris, 221 avenue Jean Jaurès - 75019 Paris'}]   
+DAY 2:   
+[Attraction{name='Catedrala din Bourges', description='', location='14 pl Etienne Dolet, 18000 Bourges'}, Attraction{name='Clock Sculpture', description='Just outside the Saint-Lazare train station in Paris is a sculpture with clocks….lots of clocks.', location=' Cour du Havre, 5 Rue d’Amsterdam, 75008 Paris'}]  
