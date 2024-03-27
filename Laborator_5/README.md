@@ -12,14 +12,14 @@ Each employee has a name and a unique ID.
 ** display the content of the repository (without the content of the files);
 
 ### Output
-> Task :Main.main()  
+ Task :Main.main()  
 Person: Mihai_121212  
 Documents:  
-  - Documentatie.pdf  
+   Documentatie.pdf  
 Person: Ana_222255  
 Documents:  
-  - methods.png  
+   methods.png  
 Person: John_123456  
 Documents:  
-  - diagrama.png  
+   diagrama.png  
 
