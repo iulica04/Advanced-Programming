@@ -3,6 +3,7 @@ import java.io.InterruptedIOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Repository {
     private final String directory;
@@ -28,6 +29,7 @@ public class Repository {
                         } catch (IOException e) {
                             System.err.println("Error parsing documents: " + e.getMessage());
                         }
+                        System.out.println("->>" + personDocuments.toString());
                         documents.put(person, personDocuments);
                     }
                     return FileVisitResult.CONTINUE;
@@ -49,7 +51,7 @@ public class Repository {
                 throw new InvalidDirectoryNameException("Id must to be a positive and not null number.");
             }
         } else {
-            // return new Document("?", "?")
+            // return new Person("?", -1);
             throw new InvalidDirectoryNameException("Invalid directory name.");
         }
     }
@@ -60,7 +62,7 @@ public class Repository {
         if (parts.length == 2) {
             return new Document(parts[0], parts[1]);
         } else {
-            // return new Document("?", "?")
+            //return new Document("?", "?");
             throw new InvalidDocumentException("Invalid document: " + fileName);
         }
     }
@@ -73,5 +75,14 @@ public class Repository {
                 System.out.println("  - " + document.name() + "." + document.format());
             }
         }
+    }
+
+    public String getName() {
+        Path path = Paths.get(directory);
+        return path.getFileName().toString();
+    }
+
+    public Map<Person, List<Document>> getDocuments() {
+        return documents;
     }
 }
