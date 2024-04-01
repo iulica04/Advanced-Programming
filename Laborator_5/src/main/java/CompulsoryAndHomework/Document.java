@@ -1,3 +1,4 @@
+package CompulsoryAndHomework;
 
 public record Document(String name, String format) {
     @Override

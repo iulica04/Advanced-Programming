@@ -1,3 +1,4 @@
+package CompulsoryAndHomework;
 import Exceptions.InvalidCommandException;
 
 import java.io.IOException;

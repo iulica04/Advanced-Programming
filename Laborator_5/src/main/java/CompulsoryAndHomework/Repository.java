@@ -1,3 +1,5 @@
+package CompulsoryAndHomework;
+
 import Exceptions.InvalidDirectoryNameException;
 import Exceptions.InvalidDocumentException;
 

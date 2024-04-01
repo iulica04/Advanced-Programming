@@ -1,3 +1,4 @@
+package CompulsoryAndHomework;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.Version;
@@ -37,11 +38,23 @@ Use a template engine such as FreeMarker or Velocity, in order to create the HTM
                 return;
             }
 
-            File outputFile = new File("report.html");
+            String outputPath = "D:\\Advanced-Programming\\Laborator_5\\src\\main\\resources\\report.html";
+            File outputFile = new File(outputPath);
+
+
+            if (!outputFile.exists()) {
+                if (outputFile.createNewFile()) {
+                    System.out.println("Fișierul a fost creat cu succes: " + outputPath);
+                } else {
+                    System.err.println("Nu s-a putut crea fișierul.");
+                    return;
+                }
+            }
+
             try (FileWriter writer = new FileWriter(outputFile)) {
                 template.process(dataModel, writer);
                 System.out.println("Report generated successfully: " + outputFile.getAbsolutePath());
-                new View("report.html").execute();
+                new View("D:\\Advanced-Programming\\Laborator_5\\src\\main\\resources\\report.html").execute();
             } catch (TemplateException e) {
                 System.err.println("Error processing template: " + e.getMessage());
             }

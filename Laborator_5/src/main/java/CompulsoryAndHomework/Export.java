@@ -1,3 +1,6 @@
+package CompulsoryAndHomework;
+
+import CompulsoryAndHomework.Command;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
