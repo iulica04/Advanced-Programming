@@ -3,8 +3,6 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="Laborator_5" target="21" />
-      <module name="Laborator_5.main" target="21" />
-      <module name="Laborator_5.test" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>

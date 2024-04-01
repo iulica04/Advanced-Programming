@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Advanced-Programming.iml" filepath="$PROJECT_DIR$/Advanced-Programming.iml" />
       <module fileurl="file://$PROJECT_DIR$/Laborator_5.iml" filepath="$PROJECT_DIR$/Laborator_5.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Laborator_5.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Laborator_5.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Laborator_5.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Laborator_5.test.iml" />
     </modules>
   </component>
 </project>
