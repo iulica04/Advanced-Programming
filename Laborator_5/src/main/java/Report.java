@@ -37,11 +37,23 @@ Use a template engine such as FreeMarker or Velocity, in order to create the HTM
                 return;
             }
 
-            File outputFile = new File("report.html");
+            String outputPath = "D:\\Advanced-Programming\\Laborator_55\\src\\main\\resources\\Report.html";
+            File outputFile = new File(outputPath);
+
+            try {
+                if (!outputFile.exists()) {
+                    if (!outputFile.createNewFile()) {
+                        throw new IOException("Failed to create file: " + outputFile.getAbsolutePath());
+                    }
+                }
+            } catch (SecurityException e) {
+                throw new IOException("Permission denied while creating file: " + outputFile.getAbsolutePath());
+            }
+
             try (FileWriter writer = new FileWriter(outputFile)) {
                 template.process(dataModel, writer);
                 System.out.println("Report generated successfully: " + outputFile.getAbsolutePath());
-                new View("report.html").execute();
+                new View("D:\\Advanced-Programming\\Laborator_55\\src\\main\\resources\\Report.html").execute();
             } catch (TemplateException e) {
                 System.err.println("Error processing template: " + e.getMessage());
             }

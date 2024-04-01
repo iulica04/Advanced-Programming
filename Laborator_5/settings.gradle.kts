@@ -1,2 +1,2 @@
-rootProject.name = "Laborator_5"
+rootProject.name = "Laborator_55"
 
