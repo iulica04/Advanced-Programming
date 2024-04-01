@@ -16,7 +16,7 @@ public class Export implements Command {
     public void execute() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        File outputFile = new File(outputPath); // trebuie sa se sspecifice si fisierul
+        File outputFile = new File(outputPath); // 
         try {
             objectMapper.writeValue(outputFile, repository.getCastDocumentsToString());
             System.out.println("Repository exported successfully to: " + outputPath);
