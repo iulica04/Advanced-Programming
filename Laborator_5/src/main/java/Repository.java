@@ -87,17 +87,17 @@ public class Repository {
         return documents;
     }
 
-    public Map<String, List<String>> getCastDocumentsToString(){
-         Map<String, List<String>> documentsForEachPerson = new HashMap<>();
+    public Map<String, List<String>> getCastDocumentsToString() {
+        Map<String, List<String>> documentsForEachPerson = new HashMap<>();
 
-         for(Person person : documents.keySet()){
-             List<String> listDocuments = new ArrayList<>();
-             for(Document document : documents.get(person)){
-                 listDocuments.add(document.name()+"."+document.format());
-             }
-             documentsForEachPerson.put(person.name()+"_"+person.id(), listDocuments);
-         }
+        for (Person person : documents.keySet()) {
+            List<String> listDocuments = new ArrayList<>();
+            for (Document document : documents.get(person)) {
+                listDocuments.add(document.name() + "." + document.format());
+            }
+            documentsForEachPerson.put(person.name() + "_" + person.id(), listDocuments);
+        }
 
-         return documentsForEachPerson;
+        return documentsForEachPerson;
     }
 }
