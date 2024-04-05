@@ -105,7 +105,7 @@ public class FindMaximalGroups implements Command {
         for (int i : candidatesArray) {
             List<Integer> newCandidates = new ArrayList<>();
             for (int j : candidatesArray) {
-                if(matrix[i][j] != null){
+                if (matrix[i][j] != null) {
                     if (i != j && matrix[i][j].equals("true") && !visited[j]) {
                         newCandidates.add(j);
                     }

@@ -9,11 +9,11 @@ public class Shell {
 
 
         try {
-            while(true){
+            while (true) {
                 System.out.print("Enter command (view, report, export, find all maximal groups): ");
                 String command = scanner.nextLine();
 
-                if(command.equals("exit")){
+                if (command.equals("exit")) {
                     break;
                 }
 
