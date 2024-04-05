@@ -12,6 +12,8 @@ Pentru a crea o interfață grafică cu utilizatorul pentru joc, puteți utiliza
 * O pânză (panou de desen) pentru desenarea tablei. Desenați liniile grilei în funcție de valorile specificate în panoul de configurare. Acest panou trebuie plasat în partea centrală a cadrului.
 * Un panou de control pentru gestionarea jocului. Acest panou va conține butoanele: Încărcare , Salvare , Ieșire , etc. și va fi plasat în partea de jos a cadrului.
 
+![imagine joc](https://github.com/iulica04/Advanced-Programming/blob/ccfafaa9a33e98169e07b66f418c91b71e4de3df/Laborator_6/joculetJava.png)
+
 ## Homework
 * Creați modelul orientat pe obiecte.
 * Inițializați jocul generând stick-uri aleatorii și plasați-le pe tablă. Implementați modul direct sau reținut pentru desenarea tablei de joc.
