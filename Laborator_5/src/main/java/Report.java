@@ -37,7 +37,7 @@ Use a template engine such as FreeMarker or Velocity, in order to create the HTM
                 return;
             }
 
-            String outputPath = "D:\\Advanced-Programming\\Laborator_55\\src\\main\\resources\\Report.html";
+            String outputPath = "D:\\Advanced-Programming\\Laborator_5\\src\\main\\resources\\Report.html";
             File outputFile = new File(outputPath);
 
             try {
@@ -53,7 +53,7 @@ Use a template engine such as FreeMarker or Velocity, in order to create the HTM
             try (FileWriter writer = new FileWriter(outputFile)) {
                 template.process(dataModel, writer);
                 System.out.println("Report generated successfully: " + outputFile.getAbsolutePath());
-                new View("D:\\Advanced-Programming\\Laborator_55\\src\\main\\resources\\Report.html").execute();
+                new View("D:\\Advanced-Programming\\Laborator_5\\src\\main\\resources\\Report.html").execute();
             } catch (TemplateException e) {
                 System.err.println("Error processing template: " + e.getMessage());
             }
