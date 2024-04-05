@@ -20,3 +20,5 @@ Pentru a crea o interfață grafică cu utilizatorul pentru joc, puteți utiliza
 * Implementați logica jocului. Când jucătorul execută o operație apăsată cu mouse-ul , trebuie desenată o piatră în locația mouse-ului: roșu sau albastru, în funcție de rândul cui este. Validați mișcarea, conform regulilor jocului. Determinați câștigătorul jocului.
 * (+0,5p) Exportați imaginea curentă a tablei de joc într-un fișier PNG.
 * (+0,5p) Utilizați serializarea obiectelor pentru a salva și a restabili starea curentă a jocului.
+
+![imagine_joc2](https://github.com/iulica04/Advanced-Programming/blob/5778f056a151aa062a5350579ae709ce6736f331/Laborator_6/Joc.png)
