@@ -3,10 +3,9 @@ import java.util.List;
 import java.util.Random;
 
 public class Bag {
-    private List<Token> tokens;
+    private final List<Token> tokens;
+    Object lock = new Object();
 
-    // number va fi numarul maxim pentru crearea secventelor i1, i2, i3
-    // dar exista mai multe jetoane de acelasi tip (pentru logica jocului)
     public Bag(int number) {
         tokens = new ArrayList<>();
         Random random = new Random();
@@ -27,21 +26,29 @@ public class Bag {
         }
     }
 
-    public synchronized List<Token> extractTokens (int howMany){
+    public synchronized List<Token> extractTokens(int howMany) {
         List<Token> extracted = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < howMany; i++) {
             if (tokens.isEmpty()) {
-                break; // Nu mai sunt token-uri în sac
+                break;
             }
             int index = random.nextInt(tokens.size());
-            Token token = tokens.remove(index);
+            Token token = tokens.get(index);
             if (token == null) {
                 System.out.println("No more tokens");
                 break;
             }
             extracted.add(token);
+            tokens.remove(token);
         }
         return extracted;
     }
+
+    public void printTokens() {
+        for (int i = 0; i < tokens.size(); i++) {
+            System.out.println(i + "----->" + tokens.get(i).number1() + "      " + tokens.get(i).number2());
+        }
+    }
+
 }
