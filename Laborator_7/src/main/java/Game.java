@@ -7,12 +7,17 @@ public class Game {
     Bag bag;
     List<Player> players = new ArrayList<>();
     private int currentPlayerIndex = 0;
+    int sequenceLength;
 
     public Game(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Sequence length: ");
-        int number = scanner.nextInt();
-        this.bag = new Bag(number);
+        sequenceLength = scanner.nextInt();
+        this.bag = new Bag(sequenceLength);
+    }
+
+    public int getSequenceLength() {
+        return sequenceLength;
     }
 
     public void addPlayer(Player player){
@@ -32,6 +37,17 @@ public class Game {
         for (Player player : players) {
             player.stop();
         }
+
+        int max=0;
+        String winner = "";
+        for(Player player : players){
+            if(player.getMaxLength() > max){
+                max = player.getMaxLength();
+                winner = player.getName();
+            }
+        }
+
+        System.out.println("Winner is " + winner + " with a sequence of length " + max);
     }
 
     public synchronized boolean isPlayersTurn(Player player) {
@@ -40,6 +56,7 @@ public class Game {
 
     public synchronized void playerTurnFinished() {
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+        notifyAll();
     }
 
 
@@ -47,7 +64,7 @@ public class Game {
         Game game = new Game();
         Faker fake = new Faker();
 
-        for(int i=0; i<5; i++){
+        for(int i=0; i<2; i++){
             game.addPlayer(new Player(fake.name().fullName()));
         }
         game.play();
