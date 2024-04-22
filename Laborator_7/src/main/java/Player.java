@@ -24,7 +24,7 @@ public class Player implements Runnable {
 
     @Override
     public void run() {
-        while (running) {
+        while (this.running && running) {
             synchronized (game) {
                 try {
                     while (!game.isPlayersTurn(this)) {

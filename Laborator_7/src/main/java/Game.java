@@ -8,6 +8,7 @@ public class Game {
     List<Player> players = new ArrayList<>();
     private int currentPlayerIndex = 0;
     int sequenceLength;
+    private Thread timeKeeperThread;
 
     public Game(){
         Scanner scanner = new Scanner(System.in);
@@ -30,12 +31,17 @@ public class Game {
             Thread thread = new Thread(player);
             thread.start();
         }
+
+        timeKeeperThread = new Thread(new TimeKeeper(10000)); // 10 seconds time limit
+        timeKeeperThread.setDaemon(true);
+        timeKeeperThread.start();
     }
 
     public void stopGame() {
         System.out.println("The game has stopped.");
         for (Player player : players) {
             player.stop();
+            notifyAll();
         }
 
         int max=0;
