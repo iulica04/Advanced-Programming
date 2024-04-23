@@ -1,8 +1,10 @@
+package DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import Database.Database;
+import Entities.Author;
 public class AuthorDAO {
     public AuthorDAO() {
     }
@@ -16,6 +18,8 @@ public class AuthorDAO {
             pstmt.setString(1, name);
             pstmt.executeUpdate();
             connection.commit();
+        } catch (Exception e) {
+            System.err.println(e);
         }
     }
 
@@ -44,27 +48,40 @@ public class AuthorDAO {
         }
     }
 
-    public Integer findByName(String name) throws SQLException {
+    public Author findByName(String name) throws SQLException {
+        // SQL query to find an author by name
         Connection con = Database.getConnection();
-        String query = "SELECT id FROM authors WHERE name = ?";
+        String query = "SELECT id, name FROM authors WHERE name = ?"; // Selectează atât ID-ul, cât și numele
 
         try (PreparedStatement pstmt = con.prepareStatement(query)) {
             pstmt.setString(1, name);
+
             try (ResultSet rs = pstmt.executeQuery()) {
-                return rs.next() ? rs.getInt(1) : null;
+                if (rs.next()) {
+                    int authorId = rs.getInt("id");
+                    return new Author(authorId, name);
+                } else {
+                    return null;
+                }
             }
         }
     }
 
-    public String findById(int id) throws SQLException {
+    public Author findById(int id) throws SQLException {
         // SQL query to find an author by id
-        Connection connection = Database.getConnection();
-        String query = "SELECT name FROM authors WHERE id = ?";
+        Connection con = Database.getConnection();
+        String query = "SELECT id, name FROM authors WHERE id = ?"; // Selectează atât ID-ul, cât și numele
 
-        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
             pstmt.setInt(1, id);
+
             try (ResultSet rs = pstmt.executeQuery()) {
-                return rs.next() ? rs.getString(1) : null;
+                if (rs.next()) {
+                    String authorName = rs.getString("name");
+                    return new Author(id, authorName);
+                } else {
+                    return null;
+                }
             }
         }
     }
