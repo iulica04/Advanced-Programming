@@ -20,15 +20,6 @@
           </set>
         </option>
       </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/Laborator_8" />
-        <option name="gradleHome" value="" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/Laborator_8" />
-          </set>
-        </option>
-      </GradleProjectSettings>
     </option>
   </component>
 </project>

@@ -6,13 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Laborator-8" />
+        <module name="Laborator_8" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Laborator_5" target="21" />
       <module name="Laborator_5.main" target="21" />
       <module name="Laborator_5.test" target="21" />
+      <module name="Laborator_8.main" target="21" />
+      <module name="Laborator_8.test" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>
