@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="Laborator_8" />
-      </profile>
-    </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Laborator8.main" target="21" />
+      <module name="Laborator8.test" target="21" />
       <module name="Laborator_5" target="21" />
       <module name="Laborator_5.main" target="21" />
       <module name="Laborator_5.test" target="21" />
+      <module name="Laborator_8" target="21" />
       <module name="Laborator_8.main" target="21" />
       <module name="Laborator_8.test" target="21" />
+      <module name="Laborator__8" target="21" />
+      <module name="Laborator__8.main" target="21" />
+      <module name="Laborator__8.test" target="21" />
+      <module name="org.example.Laborator__8.main" target="21" />
+      <module name="org.example.Laborator__8.test" target="21" />
+      <module name="untitled" target="21" />
+      <module name="untitled.main" target="21" />
+      <module name="untitled.test" target="21" />
+      <module name="untitled2" target="21" />
+      <module name="untitled2.main" target="21" />
+      <module name="untitled2.test" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>
