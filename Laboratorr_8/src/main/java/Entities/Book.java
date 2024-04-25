@@ -1,16 +1,16 @@
 package Entities;
 
+import java.util.Date;
+
 public class Book {
     int id;
     String title;
-    int id_author;
-    int id_genre;
     String publisher_date;
     String language;
     int number_of_pages;
     double average_rating;
-    int isbn;
-    int isbn13;
+    String isbn;
+    String isbn13;
     String publisher;
     int rating_count;
     int text_reviews_count;
@@ -18,21 +18,17 @@ public class Book {
 
     public Book(int id,
                 String title,
-                int id_author,
-                int id_genre,
                 String publisher_date,
                 String language,
                 int number_of_pages,
                 double average_rating,
-                int isbn,
-                int isbn13,
+                String isbn,
+                String isbn13,
                 String publisher,
                 int rating_count,
                 int text_reviews_count){
         this.id = id;
         this.title = title;
-        this.id_author = id_author;
-        this.id_genre = id_genre;
         this.publisher_date = publisher_date;
         this.language = language;
         this.number_of_pages = number_of_pages;
@@ -78,21 +74,6 @@ public class Book {
         this.language = language;
     }
 
-    public int getId_genre() {
-        return id_genre;
-    }
-
-    public void setId_genre(int id_genre) {
-        this.id_genre = id_genre;
-    }
-
-    public int getId_author() {
-        return id_author;
-    }
-
-    public void setId_author(int id_author) {
-        this.id_author = id_author;
-    }
 
     public int getId() {
         return id;
@@ -110,19 +91,19 @@ public class Book {
         this.average_rating = average_rating;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
-    public int getIsbn13() {
+    public String getIsbn13() {
         return isbn13;
     }
 
-    public void setIsbn13(int isbn13) {
+    public void setIsbn13(String isbn13) {
         this.isbn13 = isbn13;
     }
 
@@ -154,8 +135,6 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", id_author=" + id_author +
-                ", id_genre=" + id_genre +
                 ", publisher_date='" + publisher_date + '\'' +
                 ", language='" + language + '\'' +
                 ", number_of_pages=" + number_of_pages +

@@ -1,9 +1,6 @@
 package DAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 import Database.DatabaseConnection;
 import Entities.Author;
@@ -12,7 +9,7 @@ public class AuthorDAO {
     public AuthorDAO() {
     }
 
-    public void create(String name) throws SQLException {
+    public  void create(String name) throws SQLException {
         // SQL query to insert a new author
         String query = "INSERT INTO authors (name) VALUES (?)";
 
@@ -114,4 +111,5 @@ public class AuthorDAO {
             System.err.println(e);
         }
     }
+
 }
