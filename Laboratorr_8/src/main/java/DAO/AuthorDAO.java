@@ -101,11 +101,10 @@ public class AuthorDAO {
              PreparedStatement pstmt = connection.prepareStatement(query)) {
             ResultSet rs = pstmt.executeQuery();
 
-            System.out.printf("%-10s %-20s%n", "ID", "Name");
-            System.out.println("----------------------------");
+            System.out.println("Authors: ");
 
             while (rs.next()) {
-                System.out.printf("%-10s %-20s%n", rs.getInt(1), rs.getString(2));
+                System.out.println("  --> Id: " + rs.getInt("id") + ", Name: " + rs.getString("name"));
             }
         } catch (SQLException e) {
             System.err.println(e);

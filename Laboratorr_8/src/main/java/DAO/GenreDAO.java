@@ -88,20 +88,19 @@ public class GenreDAO {
         return null;
     }
 
-    public void printAll() {
+    public void printAll() throws SQLException {
         String query = "SELECT * FROM genre";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query);
              var rs = pstmt.executeQuery()) {
 
-            System.out.printf("%-10s %-20s%n", "ID", "Book_genre");
-            System.out.println("---------------------------------");
+            System.out.println("Genres: ");
 
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String book_genre = rs.getString(2);
-                System.out.printf("%-10s %-20s%n", id, book_genre);
+                System.out.println("  --> Id: " + id + ", Genre: " + book_genre);
             }
         } catch (SQLException e) {
             System.err.println(e);

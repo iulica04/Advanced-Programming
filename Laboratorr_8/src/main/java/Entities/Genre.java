@@ -9,7 +9,8 @@ public class Genre {
         this.book_genre = book_genre;
     }
 
-    Genre() {}
+    Genre() {
+    }
 
     public int getId() {
         return id;

@@ -3,13 +3,15 @@ package Database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 public class Database {
     private static final String URL = "jdbc:postgresql://localhost:5432/BookDB";
     private static final String USER = "postgres";
     private static final String PASSWORD = "database";
     private static Connection connection = null;
 
-    private Database() {}
+    private Database() {
+    }
 
     public static Connection getConnection() {
         if (connection == null) {

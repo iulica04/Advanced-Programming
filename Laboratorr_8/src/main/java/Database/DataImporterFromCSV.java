@@ -16,23 +16,23 @@ import java.time.LocalDate;
 public class DataImporterFromCSV {
     public static void importCSVAuthors(String path) {
         AuthorDAO authorDAO = new AuthorDAO();
-        try(
-            BufferedReader reader = new BufferedReader(new FileReader(path))) {
+        try (
+                BufferedReader reader = new BufferedReader(new FileReader(path))) {
 
             String line;
-            while((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
 
                 String[] names = data[2].split("/");
                 for (String name : names) {
                     name = name.trim(); //
-                    if (!name.isEmpty() && authorDAO.findByName(name) == null){
+                    if (!name.isEmpty() && authorDAO.findByName(name) == null) {
                         authorDAO.create(name);
                     }
                 }
             }
 
-        } catch ( IOException  | SQLException e) {
+        } catch (IOException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -49,7 +49,7 @@ public class DataImporterFromCSV {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
 
-                if(data.length != 12)     // sunt linii care nu respecta structura
+                if (data.length != 12)     // sunt linii care nu respecta structura
                 {
                     continue;
                 }
@@ -57,34 +57,42 @@ public class DataImporterFromCSV {
                 index++;
 
                 String date = data[10];
-                System.out.println(index + " Date: " + date);
                 String[] componentsOfData = date.split("/"); // luna/zi/year in CSV ----- year-luna-zi in SQL
 
-                try{
-                    bookDAO.create(data[1],
-                            Date.valueOf(LocalDate.of(Integer.parseInt(componentsOfData[2]), Integer.parseInt(componentsOfData[1]), Integer.parseInt(componentsOfData[0]))),
-                            data[6],
-                            Integer.parseInt(data[7]),
-                            Double.parseDouble(data[3]),
-                            data[4],
-                            data[5],
-                            data[11],
-                            Integer.parseInt(data[8]),
-                            Integer.parseInt(data[9]));
+                try {
+                    if (bookDAO.findByName(title) == null) {
+                        bookDAO.create(data[1],
+                                Date.valueOf(LocalDate.of(
+                                        Integer.parseInt(componentsOfData[2]),
+                                        Integer.parseInt(componentsOfData[0]),
+                                        Integer.parseInt(componentsOfData[1]))),
+                                data[6],
+                                Integer.parseInt(data[7]),
+                                Double.parseDouble(data[3]),
+                                data[4],
+                                data[5],
+                                data[11],
+                                Integer.parseInt(data[8]),
+                                Integer.parseInt(data[9]));
+                    }
                 } catch (Exception e) {
-                    System.out.println("Invalid data " + date);
+                    System.err.println("Invalid data: " + e);
+                    //e.printStackTrace();
                     continue;
                 }
 
 
-                if(bookDAO.findByName(title) != null){
+                if (bookDAO.findByName(title) != null) {
                     int bookId = bookDAO.findByName(title).getId();
 
                     String[] names = data[2].split("/");
                     for (String name : names) {
-                        name = name.trim();
-                        int authorId = authorDAO.findByName(name).getId();
-                        bookAuthorDAO.create(bookId, authorId);
+                        if (authorDAO.findByName(name) != null) {
+                            int authorId = authorDAO.findByName(name).getId();
+                            if (!bookAuthorDAO.combinationExists(bookId, authorId)) {
+                                bookAuthorDAO.create(bookId, authorId);
+                            }
+                        }
                     }
                 }
             }
@@ -93,4 +101,6 @@ public class DataImporterFromCSV {
             throw new RuntimeException(e);
         }
     }
+
+
 }

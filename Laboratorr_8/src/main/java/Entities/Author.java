@@ -9,7 +9,8 @@ public class Author {
         this.name = name;
     }
 
-    public Author() { }
+    public Author() {
+    }
 
     public int getId() {
         return id;

@@ -26,7 +26,7 @@ public class Book {
                 String isbn13,
                 String publisher,
                 int rating_count,
-                int text_reviews_count){
+                int text_reviews_count) {
         this.id = id;
         this.title = title;
         this.publisher_date = publisher_date;
@@ -40,7 +40,8 @@ public class Book {
         this.text_reviews_count = text_reviews_count;
     }
 
-    Book() {}
+    Book() {
+    }
 
     public String getPublisher_date() {
         return publisher_date;
