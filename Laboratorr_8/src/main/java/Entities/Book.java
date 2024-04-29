@@ -5,66 +5,51 @@ import java.util.Date;
 public class Book {
     int id;
     String title;
-    String publisher_date;
+    String publisherDate;
     String language;
-    int number_of_pages;
-    double average_rating;
+    int numberOfPages;
+    double averageRating;
     String isbn;
     String isbn13;
     String publisher;
-    int rating_count;
-    int text_reviews_count;
+    int ratingCount;
+    int textReviewsCount;
 
 
     public Book(int id,
                 String title,
-                String publisher_date,
+                String publisherDate,
                 String language,
-                int number_of_pages,
-                double average_rating,
+                int numberOfPages,
+                double averageRating,
                 String isbn,
                 String isbn13,
                 String publisher,
-                int rating_count,
-                int text_reviews_count) {
+                int ratingCount,
+                int textReviewsCount) {
         this.id = id;
         this.title = title;
-        this.publisher_date = publisher_date;
+        this.publisherDate = publisherDate;
         this.language = language;
-        this.number_of_pages = number_of_pages;
-        this.average_rating = average_rating;
+        this.numberOfPages = numberOfPages;
+        this.averageRating = averageRating;
         this.isbn = isbn;
         this.isbn13 = isbn13;
         this.publisher = publisher;
-        this.rating_count = rating_count;
-        this.text_reviews_count = text_reviews_count;
+        this.ratingCount = ratingCount;
+        this.textReviewsCount = textReviewsCount;
+
     }
 
     Book() {
     }
 
-    public String getPublisher_date() {
-        return publisher_date;
+    public String getPublisherDate() {
+        return publisherDate;
     }
 
-    public void setPublisher_date(String publisher_date) {
-        this.publisher_date = publisher_date;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getNumber_of_pages() {
-        return number_of_pages;
-    }
-
-    public void setNumber_of_pages(int number_of_pages) {
-        this.number_of_pages = number_of_pages;
+    public void setPublisherDate(String publisherDate) {
+        this.publisherDate = publisherDate;
     }
 
     public String getLanguage() {
@@ -75,21 +60,20 @@ public class Book {
         this.language = language;
     }
 
-
-    public int getId() {
-        return id;
+    public int getNumberOfPages() {
+        return numberOfPages;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setNumberOfPages(int numberOfPages) {
+        this.numberOfPages = numberOfPages;
     }
 
-    public double getAverage_rating() {
-        return average_rating;
+    public double getAverageRating() {
+        return averageRating;
     }
 
-    public void setAverage_rating(double average_rating) {
-        this.average_rating = average_rating;
+    public void setAverageRating(double averageRating) {
+        this.averageRating = averageRating;
     }
 
     public String getIsbn() {
@@ -116,35 +100,36 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public int getRating_count() {
-        return rating_count;
+    public int getRatingCount() {
+        return ratingCount;
     }
 
-    public void setRating_count(int rating_count) {
-        this.rating_count = rating_count;
+    public void setRatingCount(int ratingCount) {
+        this.ratingCount = ratingCount;
     }
 
-    public int getText_reviews_count() {
-        return text_reviews_count;
+    public int getTextReviewsCount() {
+        return textReviewsCount;
     }
 
-    public void setText_reviews_count(int text_reviews_count) {
-        this.text_reviews_count = text_reviews_count;
+    public void setTextReviewsCount(int textReviewsCount) {
+        this.textReviewsCount = textReviewsCount;
     }
 
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", publisher_date='" + publisher_date + '\'' +
-                ", language='" + language + '\'' +
-                ", number_of_pages=" + number_of_pages +
-                ", average_rating=" + average_rating +
-                ", isbn=" + isbn +
-                ", isbn13=" + isbn13 +
-                ", publisher='" + publisher + '\'' +
-                ", rating_count=" + rating_count +
-                ", text_reviews_count=" + text_reviews_count +
-                '}';
+    public int getId() {
+        return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
 }

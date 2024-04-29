@@ -14,30 +14,30 @@ public class BookDAO {
     }
 
     public void create(String title,
-                       Date publisher_date,
+                       Date publisherDate,
                        String language,
-                       int number_of_pages,
-                       double average_rating,
+                       int numberOfPages,
+                       double averageRating,
                        String isbn,
                        String isbn13,
                        String publisher,
-                       int rating_count,
-                       int text_reviews_count) throws SQLException {
+                       int ratingCount,
+                       int textReviewsCount) throws SQLException {
         // SQL query to insert a new book
         String query = "INSERT INTO books (title, publisher_date, language, number_of_pages, average_rating, isbn, isbn13, publisher, rating_count, text_reviews_count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
             pstmt.setString(1, title);
-            pstmt.setDate(2, publisher_date);
+            pstmt.setDate(2, publisherDate);
             pstmt.setString(3, language);
-            pstmt.setInt(4, number_of_pages);
-            pstmt.setDouble(5, average_rating);
+            pstmt.setInt(4, numberOfPages);
+            pstmt.setDouble(5, averageRating);
             pstmt.setString(6, isbn);
             pstmt.setString(7, isbn13);
             pstmt.setString(8, publisher);
-            pstmt.setInt(9, rating_count);
-            pstmt.setInt(10, text_reviews_count);
+            pstmt.setInt(9, ratingCount);
+            pstmt.setInt(10, textReviewsCount);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e);
@@ -46,30 +46,30 @@ public class BookDAO {
 
     public void update(int id,
                        String title,
-                       Date publisher_date,
+                       Date publisherDate,
                        String language,
-                       int number_of_pages,
-                       double average_rating,
+                       int numberOfPages,
+                       double averageRating,
                        String isbn,
                        String isbn13,
                        String publisher,
-                       int rating_count,
-                       int text_reviews_count) throws SQLException {
+                       int ratingCount,
+                       int textReviewsCount) throws SQLException {
         // SQL query to update a book
         String query = "UPDATE books SET title = ?, publisher_date = ?, language = ?, number_of_pages = ?, average_rating = ?, isbn = ?, isbn13 = ?, publisher = ?, rating_count = ?, text_reviews_count = ? WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
             pstmt.setString(1, title);
-            pstmt.setDate(2, publisher_date);
+            pstmt.setDate(2, publisherDate);
             pstmt.setString(3, language);
-            pstmt.setInt(4, number_of_pages);
-            pstmt.setDouble(5, average_rating);
+            pstmt.setInt(4, numberOfPages);
+            pstmt.setDouble(5, averageRating);
             pstmt.setString(6, isbn);
             pstmt.setString(7, isbn13);
             pstmt.setString(8, publisher);
-            pstmt.setInt(9, rating_count);
-            pstmt.setInt(10, text_reviews_count);
+            pstmt.setInt(9, ratingCount);
+            pstmt.setInt(10, textReviewsCount);
             pstmt.setInt(11, id);
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -101,17 +101,17 @@ public class BookDAO {
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     String title = rs.getString("title");
-                    String publisher_date = rs.getString("publisher_date");
+                    String publisherDate = rs.getString("publisher_date");
                     String language = rs.getString("language");
-                    int number_of_pages = rs.getInt("number_of_pages");
-                    double average_rating = rs.getDouble("average_rating");
+                    int numberOfPages = rs.getInt("number_of_pages");
+                    double averageRating = rs.getDouble("average_rating");
                     String isbn = rs.getString("isbn");
                     String isbn13 = rs.getString("isbn13");
                     String publisher = rs.getString("publisher");
-                    int rating_count = rs.getInt("rating_count");
-                    int text_reviews_count = rs.getInt("text_reviews_count");
+                    int ratingCount = rs.getInt("rating_count");
+                    int textReviewsCount = rs.getInt("text_reviews_count");
 
-                    return new Book(id, title, publisher_date, language, number_of_pages, average_rating, isbn, isbn13, publisher, rating_count, text_reviews_count);
+                    return new Book(id, title, publisherDate, language, numberOfPages, averageRating, isbn, isbn13, publisher, ratingCount, textReviewsCount);
                 } else {
                     return null;
                 }
@@ -133,17 +133,17 @@ public class BookDAO {
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     int id = rs.getInt("id");
-                    String publisher_date = rs.getString("publisher_date");
+                    String publisherDate = rs.getString("publisher_date");
                     String language = rs.getString("language");
-                    int number_of_pages = rs.getInt("number_of_pages");
-                    double average_rating = rs.getDouble("average_rating");
+                    int numberOfPages = rs.getInt("number_of_pages");
+                    double averageRating = rs.getDouble("average_rating");
                     String isbn = rs.getString("isbn");
                     String isbn13 = rs.getString("isbn13");
                     String publisher = rs.getString("publisher");
-                    int rating_count = rs.getInt("rating_count");
-                    int text_reviews_count = rs.getInt("text_reviews_count");
+                    int ratingCount = rs.getInt("rating_count");
+                    int textReviewsCount = rs.getInt("text_reviews_count");
 
-                    return new Book(id, title, publisher_date, language, number_of_pages, average_rating, isbn, isbn13, publisher, rating_count, text_reviews_count);
+                    return new Book(id, title, publisherDate, language, numberOfPages, averageRating, isbn, isbn13, publisher, ratingCount, textReviewsCount);
                 } else {
                     return null;
                 }
@@ -168,28 +168,28 @@ public class BookDAO {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String title = rs.getString("title");
-                Date publisher_date = rs.getDate("publisher_date");
+                Date publisherDate = rs.getDate("publisher_date");
                 String language = rs.getString("language");
-                int number_of_pages = rs.getInt("number_of_pages");
+                int numberOfPages = rs.getInt("number_of_pages");
                 String publisher = rs.getString("publisher");
-                double average_rating = rs.getDouble("average_rating");
+                double averageRating = rs.getDouble("average_rating");
                 String isbn = rs.getString("isbn");
                 String isbn13 = rs.getString("isbn13");
-                int rating_count = rs.getInt("rating_count");
-                int text_reviews_count = rs.getInt("text_reviews_count");
+                int ratingCount = rs.getInt("rating_count");
+                int textReviewsCount = rs.getInt("text_reviews_count");
 
                 System.out.println("\n\n Book with id: " + id);
                 System.out.println("   --> Title: " + title);
                 bookAuthorsDAO.findAuthors(title);
-                System.out.println("   --> Publisher Date: " + publisher_date);
+                System.out.println("   --> Publisher Date: " + publisherDate);
                 System.out.println("   --> Language: " + language);
-                System.out.println("   --> Number of Pages: " + number_of_pages);
+                System.out.println("   --> Number of Pages: " + numberOfPages);
                 System.out.println("   --> Publisher: " + publisher);
-                System.out.println("   --> Average Rating: " + average_rating);
+                System.out.println("   --> Average Rating: " + averageRating);
                 System.out.println("   --> ISBN: " + isbn);
                 System.out.println("   --> ISBN13: " + isbn13);
-                System.out.println("   --> Rating Count: " + rating_count);
-                System.out.println("   --> Text Reviews Count: " + text_reviews_count);
+                System.out.println("   --> Rating Count: " + ratingCount);
+                System.out.println("   --> Text Reviews Count: " + textReviewsCount);
 
             }
         } catch (SQLException e) {

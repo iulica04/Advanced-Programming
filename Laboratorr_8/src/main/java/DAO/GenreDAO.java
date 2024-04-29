@@ -13,26 +13,26 @@ public class GenreDAO {
     public GenreDAO() {
     }
 
-    public void create(String book_genre) {
+    public void create(String bookGenre) {
         // SQL query to insert a new genre
         String query = "INSERT INTO genre (book_genre) VALUES (?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
-            pstmt.setString(1, book_genre);
+            pstmt.setString(1, bookGenre);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e);
         }
     }
 
-    public void update(int id, String book_genre) throws SQLException {
+    public void update(int id, String bookGenre) throws SQLException {
         // SQL query to update a genre
         String query = "UPDATE genre SET book_genre = ? WHERE id = ?";
 
         try (Connection connection = Database.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
-            pstmt.setString(1, book_genre);
+            pstmt.setString(1, bookGenre);
             pstmt.setInt(2, id);
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -52,12 +52,12 @@ public class GenreDAO {
         }
     }
 
-    public Genre findByName(String book_genre) {
+    public Genre findByName(String bookGenre) {
         String query = "SELECT id, book_genre FROM genre WHERE book_genre = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
-            pstmt.setString(1, book_genre);
+            pstmt.setString(1, bookGenre);
 
             try (var rs = pstmt.executeQuery()) {
                 if (rs.next()) {
