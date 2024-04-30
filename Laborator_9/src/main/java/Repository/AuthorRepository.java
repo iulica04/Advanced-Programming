@@ -10,7 +10,7 @@ public class AuthorRepository {
 
     public void create(Author author) {
         em.getTransaction().begin();
-        em.persist(author);
+        em.persist(new Author("Ion Creanga"));
         em.getTransaction().commit();
     }
 

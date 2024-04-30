@@ -17,10 +17,6 @@ public class Author implements Serializable {
     @Column(name = "name")
     private String name;
 
-    public Author(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
     public Author() {
     }
