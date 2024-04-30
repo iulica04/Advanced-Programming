@@ -6,7 +6,7 @@ public class EntityManagerFactorySingleton {
 
     public static synchronized EntityManagerFactory getInstance() {
         if (instance == null) {
-            instance = Persistence.createEntityManagerFactory("BookDBUnit");
+            instance = Persistence.createEntityManagerFactory("BooksStorePU");
         }
         return instance;
     }
