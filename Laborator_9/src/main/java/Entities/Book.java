@@ -1,7 +1,14 @@
 package Entities;
 import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Table(name = "books")
+@NamedQueries({
+        @NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b ORDER BY b.title"),
+        @NamedQuery(name = "Book.findById", query = "SELECT b FROM Book b WHERE b.id = ?1"),
+        @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title = ?1")
+})
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -9,6 +16,14 @@ public class Book {
 
     @Column(name = "title")
     private String title;
+
+    @ManyToMany
+    @JoinTable(
+            name = "book_author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    private List<Author> authors;
 
     @Column(name = "publisher_date")
     private String publisher_date;
@@ -28,8 +43,9 @@ public class Book {
     @Column(name = "isbn13")
     private String isbn13;
 
-    @Column(name = "publisher")
-    private String publisher;
+    @ManyToOne
+    @JoinColumn(name = "publishing_house_id")
+    private PublishingHouse publishingHouse;
 
     @Column(name = "rating_count")
     private int rating_count;
@@ -37,29 +53,6 @@ public class Book {
     @Column(name = "text_reviews_count")
     private int text_reviews_count;
 
-    public Book(int id,
-                String title,
-                String publisher_date,
-                String language,
-                int number_of_pages,
-                double average_rating,
-                String isbn,
-                String isbn13,
-                String publisher,
-                int rating_count,
-                int text_reviews_count) {
-        this.id = id;
-        this.title = title;
-        this.publisher_date = publisher_date;
-        this.language = language;
-        this.number_of_pages = number_of_pages;
-        this.average_rating = average_rating;
-        this.isbn = isbn;
-        this.isbn13 = isbn13;
-        this.publisher = publisher;
-        this.rating_count = rating_count;
-        this.text_reviews_count = text_reviews_count;
-    }
 
     Book() {
     }
@@ -129,12 +122,20 @@ public class Book {
         this.isbn13 = isbn13;
     }
 
-    public String getPublisher() {
-        return publisher;
+    public List<Author> getAuthors() {
+        return authors;
     }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
+    }
+
+    public PublishingHouse getPublishingHouse() {
+        return publishingHouse;
+    }
+
+    public void setPublishingHouse(PublishingHouse publishingHouse) {
+        this.publishingHouse = publishingHouse;
     }
 
     public int getRating_count() {
@@ -151,22 +152,6 @@ public class Book {
 
     public void setText_reviews_count(int text_reviews_count) {
         this.text_reviews_count = text_reviews_count;
-    }
-
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", publisher_date='" + publisher_date + '\'' +
-                ", language='" + language + '\'' +
-                ", number_of_pages=" + number_of_pages +
-                ", average_rating=" + average_rating +
-                ", isbn=" + isbn +
-                ", isbn13=" + isbn13 +
-                ", publisher='" + publisher + '\'' +
-                ", rating_count=" + rating_count +
-                ", text_reviews_count=" + text_reviews_count +
-                '}';
     }
 
 }

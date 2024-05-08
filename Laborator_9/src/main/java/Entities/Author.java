@@ -1,19 +1,23 @@
 package Entities;
+
 import javax.persistence.*;
-import java.io.Serializable;
+
+
 @Entity
 @Table(name = "authors")
 @NamedQueries({
-        @NamedQuery(name = "Author.findAll",
-                query = "select e from Author e order by e.name"),
-})
+        @NamedQuery(name = "Author.findAll", query = "SELECT a FROM Author a ORDER BY a.name"),
+        @NamedQuery(name = "Author.findById", query = "SELECT a FROM Author a WHERE a.id = ?1"),
+        @NamedQuery(name = "Author.findByName", query = "SELECT a FROM Author a WHERE a.name = ?1")
 
-public class Author implements Serializable {
+})
+public class Author{
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "id")
     @Column(name = "id")
     private int id;
 
+    @Basic
     @Column(name = "name")
     private String name;
 
@@ -36,4 +40,9 @@ public class Author implements Serializable {
     public String getName() {
         return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 }

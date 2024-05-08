@@ -7,9 +7,6 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
-    flatDir {
-        dirs("libs")
-    }
 }
 
 dependencies {
@@ -18,6 +15,7 @@ dependencies {
     implementation("org.postgresql:postgresql:42.7.3")
     implementation("org.eclipse.persistence:eclipselink:2.7.8")
     implementation("org.eclipse.persistence:javax.persistence:2.1.0")
+
 
 }
 

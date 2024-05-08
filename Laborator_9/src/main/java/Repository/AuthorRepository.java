@@ -1,32 +1,50 @@
 package Repository;
 
 import Entities.Author;
-import EntityManager.EntityManagerFactorySingleton;
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+import EntityManager.DatabaseEntity;
+
 import java.util.List;
-public class AuthorRepository {
-    private EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 
+public class AuthorRepository extends AbstractRepository<Author>{
+
+    public AuthorRepository() {
+        super(Author.class);
+    }
+
+    @Override
     public void create(Author author) {
-        em.getTransaction().begin();
-        em.persist(new Author("Ion Creanga"));
-        em.getTransaction().commit();
+        super.create(author);
     }
 
+//    public void create(Author author) {
+//        DatabaseEntity.getEntityManager().getTransaction().begin();
+//        DatabaseEntity.getEntityManager().persist(author);
+//        DatabaseEntity.getEntityManager().getTransaction().commit();
+//    }
+
+//    public Author findById(Integer id){
+//        return (Author) DatabaseEntity
+//                .getEntityManager()
+//                .createNamedQuery("Author.findById")
+//                .setParameter(1,id)
+//                .getSingleResult();
+//    }
+//
+//    public List<Author> findByName(String name){
+//        return  DatabaseEntity
+//                .getEntityManager()
+//                .createQuery("SELECT a FROM Author a WHERE a.name LIKE :name", Author.class)
+//                .setParameter("name", "%" + name + "%")
+//                .getResultList();
+//    }
+
+    @Override
     public Author findById(Integer id) {
-        return em.find(Author.class, id);
+        return super.findById(id);
     }
 
-    public List<Author> findByName(String namePattern) {
-        TypedQuery<Author> query = em.createNamedQuery("Author.findByName", Author.class);
-        query.setParameter("namePattern", "%" + namePattern + "%");
-        return query.getResultList();
-    }
-
-    public void close() {
-        if (em.isOpen()) {
-            em.close();
-        }
+    @Override
+    public List<Author> findByName(String name) {
+        return super.findByName(name);
     }
 }
