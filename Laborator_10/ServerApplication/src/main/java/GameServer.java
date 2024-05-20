@@ -1,16 +1,42 @@
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GameServer {
     private int port;
     private ServerSocket serverSocket;
     private boolean running;
+    private List<Player> connectedClients;
+    private GameManager gameManager;
 
     public GameServer(int port) {
         this.port = port;
         this.running = false;
+        this.connectedClients = new ArrayList<>();
+        this.gameManager = new GameManager();
     }
+
+
+    public synchronized void addConnectedClient(Player player) {
+        connectedClients.add(player);
+    }
+
+    public synchronized boolean isUserExists(String playerName) {
+        return connectedClients.stream().anyMatch(player -> player.getName().equals(playerName));
+    }
+
+    public int createGame(Player player) {
+        return gameManager.createGame(player);
+    }
+
+    public synchronized Game getGame(int gameId) {
+        return gameManager.getGame(gameId);
+    }
+
 
     public void start() {
         try {
