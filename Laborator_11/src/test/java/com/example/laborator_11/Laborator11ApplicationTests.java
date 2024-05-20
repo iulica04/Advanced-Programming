@@ -1,4 +1,4 @@
-package com.example.Laborator_11;
+package com.example.laborator_11;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
