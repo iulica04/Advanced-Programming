@@ -1,13 +1,15 @@
 package Entities;
-import javax.persistence.*;
+
+import jakarta.persistence.*;
+
 import java.util.List;
 
 @Entity
 @Table(name = "books")
 @NamedQueries({
         @NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b ORDER BY b.title"),
-        @NamedQuery(name = "Book.findById", query = "SELECT b FROM Book b WHERE b.id = ?1"),
-        @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title = ?1")
+        @NamedQuery(name = "Book.findById", query = "SELECT b FROM Book b WHERE b.id = :id"),
+        @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title = :title")
 })
 public class Book {
     @Id
@@ -53,16 +55,22 @@ public class Book {
     @Column(name = "text_reviews_count")
     private int text_reviews_count;
 
-
-    Book() {
+    public Book() {
     }
 
-    public String getPublisher_date() {
-        return publisher_date;
+    public Book(String title, List<Author> authors) {
+        this.title = title;
+        this.authors = authors;
     }
 
-    public void setPublisher_date(String publisher_date) {
-        this.publisher_date = publisher_date;
+    // Getteri și setteri
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -73,12 +81,20 @@ public class Book {
         this.title = title;
     }
 
-    public int getNumber_of_pages() {
-        return number_of_pages;
+    public List<Author> getAuthors() {
+        return authors;
     }
 
-    public void setNumber_of_pages(int number_of_pages) {
-        this.number_of_pages = number_of_pages;
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
+    }
+
+    public String getPublisher_date() {
+        return publisher_date;
+    }
+
+    public void setPublisher_date(String publisher_date) {
+        this.publisher_date = publisher_date;
     }
 
     public String getLanguage() {
@@ -89,13 +105,12 @@ public class Book {
         this.language = language;
     }
 
-
-    public int getId() {
-        return id;
+    public int getNumber_of_pages() {
+        return number_of_pages;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setNumber_of_pages(int number_of_pages) {
+        this.number_of_pages = number_of_pages;
     }
 
     public double getAverage_rating() {
@@ -122,14 +137,6 @@ public class Book {
         this.isbn13 = isbn13;
     }
 
-    public List<Author> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
-    }
-
     public PublishingHouse getPublishingHouse() {
         return publishingHouse;
     }
@@ -153,5 +160,4 @@ public class Book {
     public void setText_reviews_count(int text_reviews_count) {
         this.text_reviews_count = text_reviews_count;
     }
-
 }

@@ -1,6 +1,7 @@
 package Entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Set;
 
 @Entity
@@ -16,7 +17,8 @@ public class PublishingHouse {
     @OneToMany(mappedBy = "publishingHouse", cascade = CascadeType.ALL)
     private Set<Book> books;
 
-    public PublishingHouse() {}
+    public PublishingHouse() {
+    }
 
     public PublishingHouse(String name) {
         this.name = name;

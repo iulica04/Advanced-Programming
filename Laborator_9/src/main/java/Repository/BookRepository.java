@@ -1,10 +1,11 @@
 package Repository;
+
 import Entities.Book;
 
 import java.util.List;
 
 
-public class BookRepository extends AbstractRepository<Book>{
+public class BookRepository extends AbstractRepository<Book> {
 
     public BookRepository() {
         super(Book.class);
