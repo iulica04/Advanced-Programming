@@ -24,7 +24,7 @@ public class Game {
     private boolean player1Turn;
     private boolean started;
     private Timer gameTimer = new Timer();
-    private long gameDurationMillis = 600000; // 10 minute
+    private long gameDurationMillis = 600000;
     private boolean settedShips1 = false;
     private boolean settedShips2 = false;
     private boolean hasPlayerMadeMove = false;
@@ -81,14 +81,14 @@ public class Game {
             long turnStartTime = System.currentTimeMillis();
             synchronized (moveLock) {
                 try {
-                    moveLock.wait(60000); // 1 minute timeout
+                    moveLock.wait(30000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
 
             long turnEndTime = System.currentTimeMillis();
-            if (turnEndTime - turnStartTime >= 60000) {
+            if (turnEndTime - turnStartTime >= 30000) {
                 currentPlayer.sendMessage("Time's up! Your turn has ended.");
             }
 
@@ -179,6 +179,7 @@ public class Game {
         gameOver = true;
         gameTimer.cancel();
     }
+
 
     private String determineWinner() {
         int player1ShipsLeft = board1.getNumberOfShips();

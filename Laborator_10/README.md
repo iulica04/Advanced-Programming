@@ -17,6 +17,7 @@ https://github.com/iulica04/Advanced-Programming/assets/126086021/0a77d490-1b2a-
  Each player has a limited time to make a move. The moves must be valid positions from 1 to 10, otherwise, the re-entry of positions will be requested. If a player fails to make a move within the preset time, his move will be invalid. The winner of the game is the one who hits all the opponent’s ships or, in case the game time expires, the one who remains with the most unhit ships.
 
 
+
 ## Compulsory
 - Create the project ServerApplication. This will contain (at least) the classes: GameServer and ClientThread.
 - Create the class GameServer. An instance of this class will create a ServerSocket running at a specified port. The server will receive requests (commands) from clients and it will execute them.
