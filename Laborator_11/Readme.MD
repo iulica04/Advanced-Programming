@@ -117,7 +117,7 @@ The main specifications of the application are:
 
 ### Output
 
-- url : http://localhost:8090/api/books
+- url (GET method) : http://localhost:8090/api/books
     ```
   [
     {
@@ -202,4 +202,104 @@ The main specifications of the application are:
     },
     { ....... 
   ```
+- url (POST method): http://localhost:8090/api/books  
+body : 
+`{
+  "title": "Numele cărții",
+  "publisher_date": "2024-05-27",
+  "language": "Engleză",
+  "number_of_pages": 300,
+  "average_rating": 4.5,
+  "isbn": "1234567890",
+  "isbn13": "9781234567890",
+  "rating_count": 100,
+  "text_reviews_count": 50,
+  "authors": ["Autor1", "Autor2"]
+  }`
+
+  ```{
+    "id": 10350,
+    "title": "Numele cărții",
+    "authors": [
+        {
+            "id": 9249,
+            "name": "Autor1"
+        },
+        {
+            "id": 9250,
+            "name": "Autor2"
+        }
+    ],
+    "publisher_date": "2024-05-27",
+    "language": "Engleză",
+    "number_of_pages": 300,
+    "average_rating": 4.5,
+    "isbn": "1234567890",
+    "isbn13": "9781234567890",
+    "rating_count": 100,
+    "text_reviews_count": 50
+  } 
+  ```
+- url (PUT method) : http://localhost:8090/api/books/3
+  ```
+  {
+    "id": 3,
+    "title": "noul nume",
+    "authors": [
+        {
+            "id": 2,
+            "name": "Mary GrandPrĂ©"
+        },
+        {
+            "id": 1,
+            "name": "J.K. Rowling"
+        }
+    ],
+    "publisher_date": "2003-11-01",
+    "language": "eng",
+    "number_of_pages": 352,
+    "average_rating": 4.42,
+    "isbn": "0439554896",
+    "isbn13": "9780439554893",
+    "rating_count": 6333,
+    "text_reviews_count": 244
+  }
+  ```
   
+- url (DELETE method) : http://localhost:8090/api/books/3 (si cu id-ul 2)
+  ```
+   {
+        "id": 1,
+        "title": "Harry Potter and the Half-Blood Prince (Harry Potter  #6)",
+        "publisher_date": "2006-09-16",
+        "language": "eng",
+        "number_of_pages": 652,
+        "average_rating": 4.57,
+        "isbn": "0439785960",
+        "isbn13": "9780439785969",
+        "rating_count": 2095690,
+        "text_reviews_count": 27591,
+        "authorNames": [
+            "J.K. Rowling",
+            "Mary GrandPrĂ©"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Harry Potter and the Prisoner of Azkaban (Harry Potter  #3)",
+        "publisher_date": "2004-05-01",
+        "language": "eng",
+        "number_of_pages": 435,
+        "average_rating": 4.56,
+        "isbn": "043965548X",
+        "isbn13": "9780439655484",
+        "rating_count": 2339585,
+        "text_reviews_count": 36325,
+        "authorNames": [
+            "J.K. Rowling",
+            "Mary GrandPrĂ©"
+        ]
+    },
+  ```
+
+

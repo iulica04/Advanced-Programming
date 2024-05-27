@@ -8,6 +8,7 @@ import com.example.laborator_11.entity.Book;
 import com.example.laborator_11.repository.AuthorRepository;
 import com.example.laborator_11.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -41,6 +42,12 @@ public class BookController {
         )).collect(Collectors.toList());
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteBook(@PathVariable("id") long id) {
+        bookRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping
     public Book addBook(@RequestBody BookInputDTO bookInputDTO) {
         // Create a new Book entity
@@ -71,6 +78,19 @@ public class BookController {
         book.setAuthors(authors);
 
         return bookRepository.save(book);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Book> updateBookName(@PathVariable("id") long id, @RequestBody String newName) {
+        Optional<Book> optionalBook = bookRepository.findById(id);
+        if (optionalBook.isPresent()) {
+            Book book = optionalBook.get();
+            book.setTitle(newName);
+            bookRepository.save(book);
+            return ResponseEntity.ok().body(book);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
