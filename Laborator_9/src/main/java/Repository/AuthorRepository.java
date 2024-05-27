@@ -5,7 +5,7 @@ import EntityManager.DatabaseEntity;
 
 import java.util.List;
 
-public class AuthorRepository extends AbstractRepository<Author>{
+public class AuthorRepository extends AbstractRepository<Author> {
 
     public AuthorRepository() {
         super(Author.class);

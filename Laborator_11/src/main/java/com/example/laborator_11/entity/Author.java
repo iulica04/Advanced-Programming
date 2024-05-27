@@ -28,6 +28,4 @@ public class Author {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(mappedBy = "authors")
-    private Set<Book> books = new HashSet<>();
 }

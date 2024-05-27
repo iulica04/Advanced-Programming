@@ -1,37 +1,34 @@
 package Repository;
 
-import javax.persistence.PersistenceContext;
-import javax.persistence.EntityManager;
-import EntityManager.DatabaseEntity;
+import jakarta.persistence.EntityManager;
 
 import java.util.List;
 
-public abstract class AbstractRepository<T>{
-    protected Class<T> entityClass;
-    @PersistenceContext
-    protected EntityManager entityManager;
+import EntityManager.DatabaseEntity;
 
-    public AbstractRepository(Class<T> entityClass) {
+public abstract class AbstractRepository<T> {
+    private Class<T> entityClass;
+
+    protected AbstractRepository(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
     public void create(T entity) {
-        DatabaseEntity.getEntityManager().getTransaction().begin();
-        DatabaseEntity.getEntityManager().persist(entity);
-        DatabaseEntity.getEntityManager().getTransaction().commit();
+        EntityManager em = DatabaseEntity.getEntityManager();
+        em.getTransaction().begin();
+        em.persist(entity);
+        em.getTransaction().commit();
     }
+
     public T findById(Integer id) {
-        return (T) DatabaseEntity
-                .getEntityManager()
-                .createNamedQuery(entityClass.getSimpleName() + ".findById")
-                .setParameter(1, id)
-                .getSingleResult();
+        EntityManager em = DatabaseEntity.getEntityManager();
+        return em.find(entityClass, id);
     }
 
     public List<T> findByName(String name) {
-        return DatabaseEntity
-                .getEntityManager()
-                .createNamedQuery(entityClass.getSimpleName() + ".findByName")
+        EntityManager em = DatabaseEntity.getEntityManager();
+        String query = "SELECT e FROM " + entityClass.getSimpleName() + " e WHERE e.name LIKE :name";
+        return em.createQuery(query, entityClass)
                 .setParameter("name", "%" + name + "%")
                 .getResultList();
     }

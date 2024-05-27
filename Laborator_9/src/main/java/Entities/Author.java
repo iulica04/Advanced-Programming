@@ -1,17 +1,15 @@
 package Entities;
 
-import javax.persistence.*;
-
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "authors")
 @NamedQueries({
         @NamedQuery(name = "Author.findAll", query = "SELECT a FROM Author a ORDER BY a.name"),
-        @NamedQuery(name = "Author.findById", query = "SELECT a FROM Author a WHERE a.id = ?1"),
-        @NamedQuery(name = "Author.findByName", query = "SELECT a FROM Author a WHERE a.name = ?1")
-
+        @NamedQuery(name = "Author.findById", query = "SELECT a FROM Author a WHERE a.id = :id"),
+        @NamedQuery(name = "Author.findByName", query = "SELECT a FROM Author a WHERE a.name = :name")
 })
-public class Author{
+public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -20,7 +18,6 @@ public class Author{
     @Basic
     @Column(name = "name")
     private String name;
-
 
     public Author() {
     }
@@ -44,5 +41,4 @@ public class Author{
     public void setName(String name) {
         this.name = name;
     }
-    
 }
