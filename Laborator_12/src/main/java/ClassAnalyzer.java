@@ -12,7 +12,6 @@ import java.util.Scanner;
 }
 
 public class ClassAnalyzer {
-
     public void analyzeAndInvoke(String className, Scanner scanner) {
         try {
             // Load the class

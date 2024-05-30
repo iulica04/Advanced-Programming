@@ -8,7 +8,6 @@ public class Example {
     public static void testMethod2() {
         System.out.println("testMethod2 executed.");
     }
-
     public static void nonTestMethod() {
         System.out.println("nonTestMethod executed.");
     }

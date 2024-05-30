@@ -7,7 +7,7 @@ The application will receive as input java classes and it will display their pro
 ## Compulsory
 - The input will be a .class file, located in the classpath of the application. :ballot_box_with_check:
 - Load the specified class in memory, assuming its package is known. :ballot_box_with_check:
-- Using reflection, extract as many information about the class (at least its methods). :ballot_box_with_check:
+- Using reflection, extract as many information about the class (at least its methods).   :ballot_box_with_check:
 - Using reflection, invoke the static methods, with no arguments, annotated with @Test. :ballot_box_with_check:
 
 ### Output
